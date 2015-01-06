@@ -1,15 +1,39 @@
-angular.module("app", [])
-.controller("MainCtrl", function($scope) {
-	$scope.mealPrice;
-	$scope.taxRate;
-	$scope.tipPer;
-	$scope.subTotal = 0;
-	$scope.thisTip = 0;
-	$scope.thisTotal = 0;
-	$scope.tipTotal = 0;
-	$scope.avgTip = 0;
-	$scope.mealCount = 0;
-	$scope.errorShow = false;
+angular.module("app", ['ngRoute'])
+
+.config(function($routeProvider){
+
+	$routeProvider
+	.when('/', {
+		templateUrl : './home.html',
+		controller : 'HomeCtrl'
+	})
+	.when('/new-meal', {
+		templateUrl : './newMeal.html',
+		controller : 'MealCtrl',
+	})
+	.when('/my-earnings', {
+		templateUrl : './myEarnings.html',
+		controller : 'EarningsCtrl',
+	})
+	.otherwise({
+		redirectTo : '/'
+	});
+})
+
+.controller("HomeCtrl", function($scope) {
+})
+
+.controller("MealCtrl", function($scope, $rootScope) {
+	$rootScope.mealPrice;
+	$rootScope.taxRate;
+	$rootScope.tipPer;
+	$rootScope.subTotal = 0;
+	$rootScope.thisTip = 0;
+	$rootScope.thisTotal = 0;
+	$rootScope.tipTotal = 0;
+	$rootScope.avgTip = 0;
+	$rootScope.mealCount = 0;
+	$rootScope.errorShow = false;
 
 	$scope.submit = function() {
 		$scope.errorShow = true;
@@ -30,22 +54,18 @@ angular.module("app", [])
 		delete $scope.tipPer;
 		$scope.errorShow = false;
 	};
+})
+
+.controller("EarningsCtrl", function($scope, $rootScope) {
 
 	$scope.reset = function() {
-		$scope.cancel();
-		$scope.tipTotal = 0;
-		$scope.avgTip = 0;
-		$scope.mealCount = 0;
-		delete $scope.subTotal;
-		delete $scope.thisTip;
-		delete $scope.thisTotal;
+		$rootScope.cancel();
+		$rootScope.tipTotal = 0;
+		$rootScope.avgTip = 0;
+		$rootScope.mealCount = 0;
+		delete $rootScope.subTotal;
+		delete $rootScope.thisTip;
+		delete $rootScope.thisTotal;
 	};
 
-
-
-	$scope.empty = function() {
-		$scope.words.length = 0;
-		$scope.showMad = false;
-		$scope.myForm.$setPristine(true);
-	};
 });
