@@ -9,11 +9,11 @@ angular.module("app", ['ngRoute'])
 	})
 	.when('/new-meal', {
 		templateUrl : './newMeal.html',
-		controller : 'MealCtrl',
+		controller : 'MealCtrl'
 	})
 	.when('/my-earnings', {
 		templateUrl : './myEarnings.html',
-		controller : 'EarningsCtrl',
+		controller : 'EarningsCtrl'
 	})
 	.otherwise({
 		redirectTo : '/'
@@ -62,13 +62,9 @@ angular.module("app", ['ngRoute'])
 .controller("EarningsCtrl", function($scope, $rootScope) {
 
 	$scope.reset = function() {
-		$rootScope.cancel();
 		$rootScope.tipTotal = 0;
 		$rootScope.avgTip = 0;
 		$rootScope.mealCount = 0;
-		delete $rootScope.subTotal;
-		delete $rootScope.thisTip;
-		delete $rootScope.thisTotal;
 	};
 
 });
