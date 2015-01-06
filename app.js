@@ -20,20 +20,23 @@ angular.module("app", ['ngRoute'])
 	});
 })
 
+.run(function ($rootScope) {
+    $rootScope.tipTotal = 0;
+	$rootScope.mealCount = 0;
+	$rootScope.avgTip = 0;
+})
+
 .controller("HomeCtrl", function($scope) {
 })
 
 .controller("MealCtrl", function($scope, $rootScope) {
-	$rootScope.mealPrice;
-	$rootScope.taxRate;
-	$rootScope.tipPer;
-	$rootScope.subTotal = 0;
-	$rootScope.thisTip = 0;
-	$rootScope.thisTotal = 0;
-	$rootScope.tipTotal = 0;
-	$rootScope.avgTip = 0;
-	$rootScope.mealCount = 0;
-	$rootScope.errorShow = false;
+	$scope.mealPrice;
+	$scope.taxRate;
+	$scope.tipPer;
+	$scope.subTotal = 0;
+	$scope.thisTip = 0;
+	$scope.thisTotal = 0;
+	$scope.errorShow = false;
 
 	$scope.submit = function() {
 		$scope.errorShow = true;
@@ -41,9 +44,9 @@ angular.module("app", ['ngRoute'])
 			$scope.subTotal = $scope.mealPrice * $scope.taxRate/100 + $scope.mealPrice;
 			$scope.thisTip = $scope.mealPrice * $scope.tipPer/100;
 			$scope.thisTotal = $scope.subTotal + $scope.thisTip;
-			$scope.tipTotal = $scope.tipTotal + $scope.thisTip;
-			$scope.mealCount++;
-			$scope.avgTip = $scope.tipTotal / $scope.mealCount;
+			$rootScope.tipTotal = $rootScope.tipTotal + $scope.thisTip;
+			$rootScope.mealCount++;
+			$rootScope.avgTip = $rootScope.tipTotal / $rootScope.mealCount;
 			$scope.cancel();
 		};
 	};
