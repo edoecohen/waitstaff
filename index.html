@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Waitstaff Calculator</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="style.css" />
+</head>
+	
+<body ng-app='app'>
+
+	<div class="container">
+		
+		<div class="header">
+			<img src="images/waiter.png">
+			<h1>Waitstaff Calculator</h1>
+		</div>
+
+		<div class="menu">
+			<a href="#/">Home</a>
+			<a href="#/new-meal">New Meal</a>
+			<a href="#/my-earnings">My Earnings</a>
+		</div>
+	</div>
+
+	<div ng-view></div>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.8/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.8/angular-route.min.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>
