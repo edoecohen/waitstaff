@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="style.css" />
 </head>
 	
-<body ng-app='app'>
+<body ng-app='app' ng-class="{loading: isLoading}">
 
 	<div class="container">
 		
@@ -22,13 +22,14 @@
 		</div>
 	</div>
 
-	<div class="container">
-		<div ng-view></div>
+	<div class="container animate-view-container">
+		<div ng-view class="animate-view"></div>
 	</div>
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.8/angular.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.8/angular-route.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-animate.min.js"></script>
 	<script src="app.js"></script>
 </body>
 </html>
